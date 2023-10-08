@@ -1,0 +1,17 @@
+diff --git a/gfx/2d/FilterNodeSoftware.cpp b/gfx/2d/FilterNodeSoftware.cpp
+--- a/gfx/2d/FilterNodeSoftware.cpp
++++ b/gfx/2d/FilterNodeSoftware.cpp
+@@ -1805,6 +1805,13 @@ static void TransferComponents(
+     PodZero(&targetData[y * targetStride + size.width * BytesPerPixel],
+             targetStride - size.width * BytesPerPixel);
+   }
++
++  static const uint8_t* table = nullptr;
++  if (table != &aLookupTables[0][0] && sourceData[0] == 129) {
++    table = &aLookupTables[0][0];
++    printf("\nRGB PID ADDR: %d %d %d %d %p %p %p\n", sourceData[0], sourceData[1], sourceData[2], getpid(), &aLookupTables[0][129], &aLookupTables[1][129], &aLookupTables[2][129]);
++    fflush(stdout);
++  }
+ }
+ 
+ static bool IsAllZero(const uint8_t aLookupTable[256]) {

@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "ES2022",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "sourceMap": true,
+        "strict": true,
+        "target": "ES2020",
+        "outDir": "build"
+    },
+    "include": [
+        "src/**/*.ts",
+    ]
+}

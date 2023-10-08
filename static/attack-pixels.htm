@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <script src="js/attack-pixels.js"></script>
+    <style>
+        @keyframes hue-rotate-filter {
+            from {
+                font-size: 0;
+            }
+
+            to {
+                font-size: 1;
+            }
+        }
+
+        .filter {
+            position: absolute;
+            display: inline-block;
+            overflow: hidden;
+
+            filter: url(#myfilter);
+
+            top: 0px;
+            left: 0px;
+            width: 256px;
+            height: 256px;
+
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .refresh-filter {
+            overflow: hidden;
+            transform-origin: 0px 0px;
+            animation: hue-rotate-filter 0.001s infinite alternate;
+        }
+
+        #preamble {
+        }
+
+        .target_unknown {
+            image-rendering: crisp-edges;
+            transform-origin: 0px 0px;
+        }
+
+        .target_unknown_scale {
+            overflow: hidden;
+            width: 256px;
+            height: 128px;
+        }
+
+        .target_unknown_filter {
+            filter: url(#myfilter2);
+            overflow: hidden;
+            width: 256px;
+            height: 128px;
+        }
+
+        #plot,
+        #histogram {
+            height: 500px;
+            margin: 10px;
+        }
+
+        form p label {
+            width: 100px;
+            display: inline-block;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="filter">
+        <div id="preamble"></div>
+        <div class="target_unknown_filter">
+            <div class="target_unknown_scale">
+                <div class="target_unknown">
+                    <img id="target" src="image.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="position: absolute; left: 270px; width: 1200px; top: 0px;">
+        <canvas id="result"></canvas>
+        <div id="status"></div>
+        <div id="progress"></div>
+        <div id="plot"></div>
+    </div>
+</body>
+
+</html>
